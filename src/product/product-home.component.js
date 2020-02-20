@@ -1,23 +1,40 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route
+} from "react-router-dom";
 import ProductActions from './product.actions';
+import ProductSummary from './product-summary.component';
+import './product-home.scss';
 
 class ProductsHome extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.props.FetchProducts();
     }
 
-    render(){
-        return <div>
-            Product Home Page
-            {this.props.products.map(p => {
-                return JSON.stringify(p);
-            })}
-        </div>;
+    render() {
+        return (
+            <div className="product-home">
+            <Router basename="/products">
+                <Switch>
+                    <Route exact path="/">
+                        <h1>Product Catalog</h1>
+                        <h3>We hope that our range of products delights you into purchasing them.</h3>
+                        <ProductSummary products={this.props.products}></ProductSummary>
+                    </Route>
+                    <Route path="/:id">
+                        <h1>Product Details</h1>
+                    </Route>
+                </Switch>
+            </Router>
+            </div>
+        );
     }
 }
 

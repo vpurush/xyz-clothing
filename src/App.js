@@ -1,4 +1,10 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+	Route,
+	Redirect
+} from "react-router-dom";
 import {Provider} from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
@@ -12,7 +18,14 @@ function App() {
 				<header className="App-header">
 					XYZ Clothing
 				</header>
-				<ProductHome></ProductHome>
+				<Router>
+					<Switch>
+						<Route path="/products">
+							<ProductHome></ProductHome>
+						</Route>
+						<Redirect exact from="*" to="/products" />
+					</Switch>
+				</Router>
 			</Provider>
 		</div>
 	);

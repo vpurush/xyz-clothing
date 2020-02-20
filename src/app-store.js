@@ -2,10 +2,7 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import AppReducer from './app-reducer';
 
 const defaultState = {
-    products: [{
-        id: 1,
-        name: 'product one'
-    }]
+    products: []
 };
 
 const AppStore = configureStore({
