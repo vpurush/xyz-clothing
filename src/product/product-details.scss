@@ -1,0 +1,18 @@
+.product-details{
+    padding: 5px;
+    text-align: left;
+    
+    .product-name{
+        font-size: 3em;
+        margin: 0;
+    }
+    .product-price{
+        font-size: 2em;
+        display: block;
+        padding: 5px 0px;
+        .product-price-currency{
+            font-size: .75em;
+            color: darkgray;
+        }
+    }
+}

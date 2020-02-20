@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import ProductActions from './product.actions';
 import ProductSummary from './product-summary.component';
+import ProductDetailsSummary from './product-details-summary.component';
 import './product-home.scss';
 
 class ProductsHome extends React.Component {
@@ -29,7 +30,7 @@ class ProductsHome extends React.Component {
                         <ProductSummary products={this.props.products}></ProductSummary>
                     </Route>
                     <Route path="/:id">
-                        <h1>Product Details</h1>
+                        <ProductDetailsSummary></ProductDetailsSummary>
                     </Route>
                 </Switch>
             </Router>
