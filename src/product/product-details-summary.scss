@@ -1,3 +1,5 @@
+@import '../variables.scss';
+
 .product-details-summary{
     display: flex;
     flex-direction: row;
@@ -5,6 +7,13 @@
 
     .details{
         flex: 0 0 60%;
+        text-align: left;
+
+        .back-to-catalog{
+            background-color: $theme-major;
+            padding: 5px;
+            color: white;
+        }
     }
     
     .related-products{
