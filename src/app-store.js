@@ -6,7 +6,7 @@ const defaultState = {
         id: 1,
         name: 'product one'
     }]
-}
+};
 
 const AppStore = configureStore({
     reducer: AppReducer,

@@ -1,6 +1,7 @@
 import {combineReducers} from 'redux';
+import ProductReducer from './product/product.reducer';
 
 const AppReducer = combineReducers({
-    products: (prevState=[], action) => prevState
+    products: ProductReducer
 });
 export default AppReducer;
