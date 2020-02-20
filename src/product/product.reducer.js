@@ -8,7 +8,7 @@ const ProductReducer = createReducer([], {
     },
     [ProductActionNames.FETCH_PRODUCTS_FAILURE]: (prevState, action) => {
         const products = [];
-        // products.error = action.payload.message;
+        products.error = action.payload.message;
         return products;
     }
 });

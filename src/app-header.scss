@@ -1,0 +1,38 @@
+.app-header{
+    display: flex;
+    flex-direction: row;
+
+    background-color: #282c34;
+    min-height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+
+    .name{
+        padding-left: 10px;
+        font-size: 2em;
+        text-align: left;
+        flex: 1 0 auto;
+    }
+
+
+    .currency-selector{
+        text-align: right;
+        flex: 1 0 auto;
+        .MuiFormLabel-root{
+            display: inline-block;
+            color: white;
+            vertical-align: middle;
+            padding: 0 10px;
+        }
+        .MuiInputBase-root{
+            color: white;
+            vertical-align: middle;
+            .MuiSelect-icon{
+                color: white;
+            }
+        }
+    }
+}

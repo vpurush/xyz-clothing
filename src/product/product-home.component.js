@@ -8,6 +8,7 @@ import {
 import ProductActions from './product.actions';
 import ProductSummary from './product-summary.component';
 import ProductDetailsSummary from './product-details-summary.component';
+import {ProductsSelector} from './product.reselect';
 import './product-home.scss';
 
 class ProductsHome extends React.Component {
@@ -45,7 +46,7 @@ ProductsHome.defaultProps = {
 
 const mapStateToProps = (store, ownProps) => {
     return {
-        products: store.products
+        products: ProductsSelector(store, ownProps)
     }
 }
 
