@@ -5,6 +5,14 @@
     .product-name{
         font-size: 3em;
         margin: 0;
+
+        .MuiSvgIcon-root{
+            cursor: pointer;
+            font-size: .8em;
+            padding: 5px;
+            color: cornflowerblue;
+            vertical-align: sub;
+        }
     }
     .product-price{
         font-size: 2em;
@@ -14,5 +22,9 @@
             font-size: .75em;
             color: darkgray;
         }
+    }
+
+    .product-desc{
+        padding: 5px;
     }
 }

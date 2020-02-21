@@ -34,6 +34,16 @@ export const ProductSelector = (productId) => {
     );
 }
 
+export const UnderlyingProductSelector = (productId) => {
+    return createSelector(
+        state => state.products,
+        (products) => {
+            const product = products.find(p => p.id == productId);
+            return product;
+        }
+    );
+}
+
 export const RelatedProductSelector = (productId) => {
     return createSelector(
         ProductsSelector,

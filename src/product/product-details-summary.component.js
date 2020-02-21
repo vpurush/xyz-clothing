@@ -16,7 +16,7 @@ class ProductsDetailsSummary extends React.Component {
             <div className="product-details-summary">
                 <div className="details">
                     <ProductDetails product={this.props.product}></ProductDetails>
-                    <Link className="back-to-catalog" to="/">Back to Product Catalog</Link>
+                    &nbsp;<Link className="back-to-catalog" to="/">Back to Product Catalog</Link>
                 </div>
                 <div className="related-products">
                     <h3>Related Products</h3>

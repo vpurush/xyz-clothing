@@ -10,6 +10,26 @@ const ProductReducer = createReducer([], {
         const products = [];
         products.error = action.payload.message;
         return products;
+    },
+    [ProductActionNames.SAVE_PRODUCT]: (prevState, action) => {
+        const products = [...prevState];
+
+        const prodToBeRemoved = products.find(p => p.id == action.payload.originalId);
+        const prodToBeAdded = {
+            id: action.payload.id,
+            name: action.payload.name,
+            description: action.payload.description,
+            price:{
+                base: action.payload.currency,
+                amount: action.payload.amount
+            },
+            relatedProducts: prodToBeRemoved.relatedProducts
+        };
+        const indexToBeRemoved = products.indexOf(prodToBeRemoved);
+        products.splice(indexToBeRemoved, 1, prodToBeAdded);
+        console.log("products", products);
+
+        return products;
     }
 });
 

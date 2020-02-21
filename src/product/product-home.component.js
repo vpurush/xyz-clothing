@@ -8,6 +8,7 @@ import {
 import ProductActions from './product.actions';
 import ProductSummary from './product-summary.component';
 import ProductDetailsSummary from './product-details-summary.component';
+import EditProduct from './edit-product.component';
 import {ProductsSelector} from './product.reselect';
 import './product-home.scss';
 
@@ -30,8 +31,11 @@ class ProductsHome extends React.Component {
                         <h3>We hope that our range of products delights you into purchasing them.</h3>
                         <ProductSummary products={this.props.products}></ProductSummary>
                     </Route>
-                    <Route path="/:id">
+                    <Route exact path="/:id">
                         <ProductDetailsSummary></ProductDetailsSummary>
+                    </Route>
+                    <Route exact path="/:id/edit">
+                        <EditProduct></EditProduct>
                     </Route>
                 </Switch>
             </Router>
