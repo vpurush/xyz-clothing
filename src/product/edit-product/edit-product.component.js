@@ -13,7 +13,7 @@ import EditRelatedProducts from './edit-related-product.component';
 import {UnderlyingProductSelector, RelatedProductSelector, ProductsSelector} from '../product.reselect';
 import './edit-product.scss';
 
-class EditProduct extends React.Component {
+export class EditProduct extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -198,6 +198,8 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)((props) => {
+export const ConnectedEditProduct = connect(mapStateToProps, mapDispatchToProps)((props) => {
     return <EditProduct key={props.product} {...props}></EditProduct>
-}));
+});
+
+export default withRouter(ConnectedEditProduct);

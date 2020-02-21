@@ -6,7 +6,13 @@ import configureStore from 'redux-mock-store';
 jest.mock('../product.actions.js');
 
 const createMockStore = configureStore([]);
-const mockStore = createMockStore();
+const mockStore = createMockStore({
+    products: [],
+    common: {
+        currencies: [],
+        selectedCurrency: {base: 'USD'}
+    }
+});
 
 import ProductHome from '../product-home.component';
 import ProductActions from '../product.actions';
