@@ -3,15 +3,18 @@ import { createSelector } from 'reselect'
 export const ProductsSelector = createSelector(
     state => state.products,
     state => state.common.selectedCurrency,
-    (products, selectedCurrency) => {
+    state => state.common.currencies,
+    (products, selectedCurrency, allCurrencies) => {
         // console.log("selectedCurrency", selectedCurrency);
         const mappedProducts = products.map(p => {
             const product = {...p};
 
-            if (selectedCurrency.rates) {
+            const productCurrency = allCurrencies.find(c => c.base == p.price.base);
+
+            if (productCurrency && selectedCurrency) {
                 let multiplier = 1;
-                if (selectedCurrency.base != p.price.base){
-                    multiplier = selectedCurrency.rates[p.price.base];
+                if (productCurrency.base != selectedCurrency.base){
+                    multiplier = productCurrency.rates[selectedCurrency.base];
                 }
                 product.price = {
                     base: selectedCurrency.base,

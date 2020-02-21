@@ -39,6 +39,7 @@ export class EditProduct extends React.Component {
         this.save = this.save.bind(this);
         this.cancel = this.cancel.bind(this);
         this.relatedItemsModified = this.relatedItemsModified.bind(this);
+        this.onCurrencySelection = this.onCurrencySelection.bind(this);
     }
 
     validate(e){
@@ -74,6 +75,12 @@ export class EditProduct extends React.Component {
         this.setState({
             [e.target.id]: val,
             errors
+        });
+    }
+
+    onCurrencySelection(e){
+        this.setState({
+            currency: e.target.value
         });
     }
 
