@@ -1,0 +1,23 @@
+@import "../../variables.scss";
+
+.edit-related-product{
+    .selected-related-items{
+        text-align: left;
+        padding: 10px 0;        
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        .related-product-item{
+            margin: 3px 3px;
+            padding: 5px;
+            border-radius: 3px;
+            background-color: $theme-major;
+            color: white;
+
+            .MuiSvgIcon-root{
+                cursor: pointer;
+                vertical-align: bottom;
+            }
+        }
+    }
+}

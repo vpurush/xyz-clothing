@@ -8,7 +8,7 @@ import {
 import ProductActions from './product.actions';
 import ProductSummary from './product-summary.component';
 import ProductDetailsSummary from './product-details-summary.component';
-import EditProduct from './edit-product.component';
+import EditProduct from './edit-product/edit-product.component';
 import {ProductsSelector} from './product.reselect';
 import './product-home.scss';
 

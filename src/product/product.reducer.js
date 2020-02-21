@@ -23,7 +23,7 @@ const ProductReducer = createReducer([], {
                 base: action.payload.currency,
                 amount: action.payload.amount
             },
-            relatedProducts: prodToBeRemoved.relatedProducts
+            relatedProducts: action.payload.relatedProducts
         };
         const indexToBeRemoved = products.indexOf(prodToBeRemoved);
         products.splice(indexToBeRemoved, 1, prodToBeAdded);

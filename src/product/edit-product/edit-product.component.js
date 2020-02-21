@@ -8,9 +8,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import ProductActions from './product.actions';
-import {UnderlyingProductSelector, RelatedProductSelector, ProductsSelector} from './product.reselect';
+import ProductActions from '../product.actions';
+import EditRelatedProducts from './edit-related-product.component';
+import {UnderlyingProductSelector, RelatedProductSelector, ProductsSelector} from '../product.reselect';
 import './edit-product.scss';
 
 class EditProduct extends React.Component {
@@ -38,6 +38,7 @@ class EditProduct extends React.Component {
         this.validate = this.validate.bind(this);
         this.save = this.save.bind(this);
         this.cancel = this.cancel.bind(this);
+        this.relatedItemsModified = this.relatedItemsModified.bind(this);
     }
 
     validate(e){
@@ -76,14 +77,10 @@ class EditProduct extends React.Component {
         });
     }
 
-    getRelatedItems(){
-        if(this.state.relatedProducts){
-            return this.props.allProducts
-                .filter(p => this.state.relatedProducts.indexOf(p.id) !== -1)
-                // .map(p => p.id + " - " + p.name)
-        } else {
-            return [];
-        }
+    relatedItemsModified(values){
+        this.setState({
+            relatedProducts: values
+        });
     }
 
     save(){
@@ -161,21 +158,12 @@ class EditProduct extends React.Component {
                             onChange={this.validate}
                             helperText={this.state.errors.description || ""} />
                     </div>
-                    <div className="form-row">
-                        {this.getRelatedItems().map(r => {
-                            return <Autocomplete
-                                id="related-products"
-                                options={this.props.allProducts}
-                                getOptionLabel={option => option.id + " - " + option.name}
-                                style={{ width: 300 }}
-                                value={r}
-                                renderInput={params => (
-                                    <TextField {...params} label="Related Items" value={r} fullWidth />
-                                )}
-                                />
-                            })
-                        }
-                    </div>
+                    <EditRelatedProducts 
+                        allProducts={this.props.allProducts} 
+                        originalId={this.state.originalId}
+                        relatedProducts={this.state.relatedProducts}
+                        itemsModified={this.relatedItemsModified}
+                        />
                     <div className="form-row buttons">
                         <span>
                             <Button variant="contained" color="primary" onClick={this.save}>
