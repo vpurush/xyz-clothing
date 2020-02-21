@@ -1,5 +1,4 @@
 import React from 'react';
-import { Provider } from 'react-redux';
 import { shallow, mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
@@ -19,6 +18,9 @@ import {EditProduct} from '../edit-product.component';
 test('Validate method set error on name field', () => {
     const editProductInstance = shallow(
         <EditProduct 
+            product={{
+                price: {}
+            }}
             currencies={[]}
             match={{params: {id: "1"}}}>
         </EditProduct>
@@ -44,6 +46,9 @@ test('Validate method set error on name field', () => {
 test('Validate method set error on id field', () => {
     const editProductInstance = shallow(
         <EditProduct 
+            product={{
+                price: {}
+            }}
             allProducts={[]}
             currencies={[]}
             match={{params: {id: "1"}}}>
@@ -62,6 +67,9 @@ test('Validate method set error on id field', () => {
 test('Validate method set error on amount field', () => {
     const editProductInstance = shallow(
         <EditProduct 
+            product={{
+                price: {}
+            }}
             allProducts={[]}
             currencies={[]}
             match={{params: {id: "1"}}}>

@@ -7,8 +7,12 @@ import ProductSummary from './product-summary.component';
 import './product-details-summary.scss';
 
 class ProductsDetailsSummary extends React.Component {
-    constructor(props) {
-        super(props);
+
+    componentDidMount(){
+        // URL contains invalid ID
+        if(!this.props.product){
+            this.props.history.push("/");
+        }
     }
 
     render() {

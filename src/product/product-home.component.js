@@ -13,9 +13,6 @@ import {ProductsSelector} from './product.reselect';
 import './product-home.scss';
 
 class ProductsHome extends React.Component {
-    constructor(props) {
-        super(props);
-    }
 
     componentDidMount() {
         this.props.FetchProducts();

@@ -12,7 +12,7 @@ const ProductReducer = createReducer([], {
         return products;
     },
     [ProductActionNames.SAVE_PRODUCT]: (prevState, action) => {
-        const products = [...prevState];
+        let products = [...prevState];
 
         const prodToBeRemoved = products.find(p => p.id == action.payload.originalId);
         const prodToBeAdded = {
@@ -25,9 +25,28 @@ const ProductReducer = createReducer([], {
             },
             relatedProducts: action.payload.relatedProducts
         };
-        const indexToBeRemoved = products.indexOf(prodToBeRemoved);
+        let indexToBeRemoved = products.indexOf(prodToBeRemoved);
         products.splice(indexToBeRemoved, 1, prodToBeAdded);
-        console.log("products", products);
+        // console.log("products", products);
+
+
+        // When ID of product is modified, update relatedProducts array of other items
+        if(action.payload.originalId != action.payload.id){
+            console.log("id mismatch")
+            products = products.map(p => {
+                const indexToBeRemovedInRelatedProducts = p.relatedProducts.indexOf(action.payload.originalId);
+                if (indexToBeRemovedInRelatedProducts != -1){
+                    indexToBeRemoved = products.indexOf(p);
+                    const newProduct = {...p};
+                    const clonedRelatedProducts = [...newProduct.relatedProducts];
+                    clonedRelatedProducts.splice(indexToBeRemovedInRelatedProducts, 1, action.payload.id);
+                    newProduct.relatedProducts = clonedRelatedProducts;
+                    return newProduct;
+                } else {
+                    return p;
+                }
+            });
+        }
 
         return products;
     }

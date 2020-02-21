@@ -42,6 +42,13 @@ export class EditProduct extends React.Component {
         this.onCurrencySelection = this.onCurrencySelection.bind(this);
     }
 
+    componentDidMount(){
+        // URL contains invalid ID
+        if(!this.props.product){
+            this.props.history.push("/");
+        }
+    }
+
     validate(e){
         // console.log("validate", e.target.id, e.target.value)
         const val = e.target.value;
