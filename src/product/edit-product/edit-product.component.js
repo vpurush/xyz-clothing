@@ -98,8 +98,18 @@ export class EditProduct extends React.Component {
     }
 
     save(){
-        this.props.SaveProduct(this.state);
-        this.props.history.push("/");
+        let isValid = true;
+        for(let prop in this.state.errors){
+            if(this.state.errors.hasOwnProperty(prop)){
+                if(this.state.errors[prop] != null){
+                    isValid = false;
+                }
+            }
+        }
+        if (isValid){
+            this.props.SaveProduct(this.state);
+            this.props.history.push("/");
+        }
     }
 
     cancel(){

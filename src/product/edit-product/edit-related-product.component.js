@@ -23,7 +23,7 @@ class EditRelatedProduct extends React.Component {
     }
 
     itemSelected(e, val){
-        if (val) {
+        if (val && val.id != this.props.originalId) {
             let relatedProducts = [...this.props.relatedProducts, val.id];
             relatedProducts = Array.from(new Set(relatedProducts));
             this.props.itemsModified(relatedProducts);
