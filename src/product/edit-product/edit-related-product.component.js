@@ -57,7 +57,7 @@ class EditRelatedProduct extends React.Component {
                             return (
                                 <span key={r.id} className="related-product-item">
                                     {r.id + ' - ' + r.name}
-                                    <DeleteForeverIcon onClick={this.removeItem.bind(this, r)}></DeleteForeverIcon>
+                                    <DeleteForeverIcon onClick={this.removeItem.bind(this, r.id)}></DeleteForeverIcon>
                                 </span>
                             );
                         })
